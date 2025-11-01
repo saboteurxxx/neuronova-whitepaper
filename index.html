@@ -1,111 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem</title>
   <style>
+    :root {
+      --bg-light: #f6faff;
+      --bg-dark: #0b0e11;
+      --text-light: #0b0e11;
+      --text-dark: #f6faff;
+      --accent: #007bff;
+    }
+
     body {
-      font-family: 'Inter', Arial, sans-serif;
-      background: linear-gradient(to bottom, #F6FAFF, #FFFFFF);
+      font-family: "Inter", Arial, sans-serif;
+      text-align: center;
       margin: 0;
       padding: 0;
-      color: #0a2342;
-      text-align: center;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.5s, color 0.5s;
     }
-    header {
-      padding: 60px 20px 20px;
-    }
+
     header img {
       width: 120px;
-      margin-bottom: 10px;
+      margin-top: 40px;
+      animation: fadeIn 1s ease;
     }
+
     h1 {
       font-size: 28px;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
+      animation: fadeInUp 0.8s ease;
     }
+
     h2 {
-      color: #0074d9;
-      font-size: 18px;
+      font-size: 16px;
+      color: var(--accent);
       font-weight: 500;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease;
     }
+
+    .buttons {
+      margin-bottom: 40px;
+      animation: fadeInUp 1.2s ease;
+    }
+
     .btn {
       display: inline-block;
-      background: #0074d9;
+      padding: 12px 20px;
+      margin: 5px;
+      background: var(--accent);
       color: #fff;
-      text-decoration: none;
-      padding: 12px 22px;
       border-radius: 8px;
       font-weight: 600;
-      margin: 10px 5px;
-      transition: background 0.3s;
+      text-decoration: none;
+      transition: 0.3s;
     }
+
     .btn:hover {
-      background: #005fa3;
+      background: #005fcc;
+      transform: translateY(-2px);
     }
+
+    .btn-dark {
+      background: #0b0e11;
+    }
+
     section {
       max-width: 800px;
-      margin: 40px auto;
+      margin: 0 auto 40px;
       text-align: left;
       padding: 0 20px;
     }
-    h3 {
-      border-left: 4px solid #0074d9;
-      padding-left: 10px;
+
+    section h3 {
+      border-left: 4px solid var(--accent);
+      padding-left: 8px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 15px;
     }
-    th, td {
-      border: 1px solid #d9e4f5;
-      padding: 8px;
-      text-align: left;
+
+    td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
     }
+
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Dark mode */
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark .btn-dark {
+      background: #f6faff;
+      color: #0b0e11;
+    }
+
+    body.dark .btn-dark:hover {
+      background: #dfe7f2;
+    }
+
     footer {
-      margin-top: 50px;
-      padding: 20px;
-      background: #f4f9ff;
-      color: #4b6584;
+      margin-bottom: 30px;
       font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
+
 <body>
+  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
   <header>
-    <img src="logo.png" alt="Neuronova Logo">
+    <img src="logo.png" alt="NEURONOVA Logo" />
     <h1>NEURONOVA</h1>
     <h2>AI Agents Marketplace & Blockchain Ecosystem</h2>
-    <a href="neuronova-whitepaper.zip" class="btn">📄 Download White Paper (RU/EN)</a>
-    <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn" style="background:#0a2342;">⭐ View on GitHub</a>
+
+    <div class="buttons">
+      <a href="neuronova-whitepaper.zip" class="btn">📄 Download White Paper (RU/EN)</a>
+      <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn btn-dark">⭐ View on GitHub</a>
+    </div>
   </header>
 
   <section>
-    <h3>Overview</h3>
-    <p>NEURONOVA — децентрализованный маркетплейс и экосистема для автономных ИИ-агентов, объединённых с блокчейн-инфраструктурой.</p>
-    <p>Каждый агент может выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через доверенную систему ZK-доказательств.</p>
+    <h3>🌐 Overview</h3>
+    <p>
+      <strong>NEURONOVA</strong> — это децентрализованный маркетплейс и экосистема для автономных ИИ-агентов,
+      объединённых с блокчейн-инфраструктурой.
+    </p>
+    <p>
+      Каждый агент может выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через
+      доверенную систему ZK-доказательств.
+    </p>
   </section>
 
   <section>
-    <h3>Vision & Mission</h3>
-    <p>Создать прозрачную и автономную экономику ИИ-агентов, где взаимодействие между пользователями, разработчиками и системами будет строиться на принципах доверия и децентрализации.</p>
+    <h3>🚀 Vision & Mission</h3>
+    <p>
+      Создать прозрачную и автономную экономику ИИ-агентов, где взаимодействие между пользователями, разработчиками
+      и системами будет строиться на принципах доверия и децентрализации.
+    </p>
   </section>
 
   <section>
-    <h3>Technology Stack</h3>
+    <h3>🧠 Technology Stack</h3>
     <table>
-      <tr><th>Frontend</th><td>Next.js, React</td></tr>
-      <tr><th>Backend</th><td>Node.js, NestJS</td></tr>
-      <tr><th>AI Engine</th><td>Python, FastAPI, LangChain</td></tr>
-      <tr><th>Blockchain</th><td>Ethereum L2 (zkSync / Base / Starknet)</td></tr>
-      <tr><th>Storage</th><td>IPFS, PostgreSQL</td></tr>
-      <tr><th>ZK / KYC Layer</th><td>Polygon ID, EZKL</td></tr>
+      <tr><td><strong>Frontend</strong></td><td>Next.js, React</td></tr>
+      <tr><td><strong>Backend</strong></td><td>Node.js, NestJS</td></tr>
+      <tr><td><strong>AI Engine</strong></td><td>Python, FastAPI, LangChain</td></tr>
+      <tr><td><strong>Blockchain</strong></td><td>Ethereum L2 (zkSync / Base / Starknet)</td></tr>
+      <tr><td><strong>Storage</strong></td><td>IPFS, PostgreSQL</td></tr>
+      <tr><td><strong>ZK/KYC Layer</strong></td><td>Polygon ID, EZKL</td></tr>
     </table>
   </section>
 
-  <footer>
-    © 2025 NEURONOVA. All rights reserved. | Confidential Draft v1.0
-  </footer>
+  <footer>© 2025 NEURONOVA — All rights reserved</footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      body.classList.toggle("dark");
+      const icon = document.querySelector(".theme-toggle");
+      icon.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+    }
+  </script>
 </body>
 </html>
