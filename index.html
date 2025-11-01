@@ -6,88 +6,142 @@
   <title>NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem</title>
   <style>
     :root {
+      --accent: #007bff;
       --bg-light: #f6faff;
       --bg-dark: #0b0e11;
       --text-light: #0b0e11;
       --text-dark: #f6faff;
-      --accent: #007bff;
-      --muted: #888;
+      --muted: #999;
     }
 
     body {
-      font-family: "Inter", Arial, sans-serif;
-      text-align: center;
       margin: 0;
-      padding: 0;
+      font-family: "Inter", Arial, sans-serif;
       background: var(--bg-light);
       color: var(--text-light);
-      transition: background 0.5s, color 0.5s;
-      scroll-behavior: smooth;
+      overflow-x: hidden;
+      transition: background 0.6s, color 0.6s;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--accent);
+      transition: 0.3s;
+      z-index: 9999;
+    }
+
+    /* Hero Section */
+    header {
+      position: relative;
+      text-align: center;
+      padding: 160px 20px 200px;
+      background: radial-gradient(circle at 50% 30%, #b8d8ff, #f6faff 80%);
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(0, 123, 255, 0.25) 0%, transparent 70%);
+      filter: blur(100px);
+      z-index: 0;
+      animation: glowPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      from { opacity: 0.7; transform: scale(1); }
+      to { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* Particle canvas */
+    canvas#particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Animated globe */
+    .globe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 550px;
+      height: 550px;
+      transform: translate(-50%, -50%);
+      opacity: 0.35;
+      z-index: 1;
     }
 
     header img {
+      position: relative;
       width: 120px;
-      margin-top: 40px;
-      animation: fadeIn 1s ease;
+      margin-bottom: 25px;
+      z-index: 3;
+      filter: drop-shadow(0 0 15px rgba(0, 123, 255, 0.5));
     }
 
     h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-      animation: fadeInUp 0.8s ease;
+      font-size: 42px;
+      margin: 0;
+      color: var(--text-light);
+      position: relative;
+      z-index: 3;
     }
 
     h2 {
       font-size: 18px;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 25px;
-      animation: fadeInUp 1s ease;
+      margin-top: 12px;
+      color: #1a1a1a;
+      opacity: 0.8;
+      position: relative;
+      z-index: 3;
     }
 
     .buttons {
-      margin-bottom: 40px;
-      animation: fadeInUp 1.2s ease;
+      margin-top: 40px;
+      z-index: 3;
+      position: relative;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 22px;
-      margin: 5px;
+      padding: 12px 24px;
+      margin: 6px;
       background: var(--accent);
-      color: #fff;
+      color: white;
       border-radius: 8px;
       font-weight: 600;
       text-decoration: none;
       transition: 0.3s;
     }
+    .btn:hover { background: #005fcc; transform: translateY(-2px); }
+    .btn-dark { background: #0b0e11; }
 
-    .btn:hover {
-      background: #005fcc;
-      transform: translateY(-2px);
-    }
-
-    .btn-dark {
-      background: #0b0e11;
-    }
-
+    /* Content */
     section {
       max-width: 900px;
       margin: 0 auto 50px;
-      text-align: left;
       padding: 0 20px;
       line-height: 1.6;
-      animation: fadeIn 1s ease;
+      position: relative;
+      z-index: 5;
     }
 
     section h3 {
       border-left: 4px solid var(--accent);
       padding-left: 8px;
-      margin-bottom: 10px;
-    }
-
-    section p {
-      margin: 6px 0;
     }
 
     table {
@@ -95,64 +149,38 @@
       border-collapse: collapse;
       margin-top: 15px;
     }
-
     td {
       border: 1px solid #ccc;
       padding: 10px 14px;
     }
 
-    .theme-toggle {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: var(--accent);
-    }
-
     .team {
       display: flex;
-      justify-content: space-around;
       flex-wrap: wrap;
       gap: 20px;
+      justify-content: space-around;
       margin-top: 20px;
     }
-
     .member {
       background: rgba(0, 0, 0, 0.03);
       border-radius: 10px;
       padding: 20px;
       width: 260px;
+      text-align: center;
       transition: transform 0.3s;
     }
-
-    .member:hover {
-      transform: translateY(-4px);
-    }
-
-    .member h4 {
-      margin: 10px 0 5px;
-    }
-
-    .member p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .member:hover { transform: translateY(-4px); }
 
     .roadmap {
       list-style: none;
       padding-left: 10px;
     }
-
     .roadmap li {
       margin: 8px 0;
       padding-left: 20px;
       border-left: 2px solid var(--accent);
       position: relative;
     }
-
     .roadmap li::before {
       content: "•";
       color: var(--accent);
@@ -162,39 +190,17 @@
     }
 
     footer {
-      margin: 50px 0 20px;
+      text-align: center;
       font-size: 14px;
       color: #777;
+      margin: 60px 0 20px;
     }
 
-    /* Dark mode */
-    body.dark {
-      background: var(--bg-dark);
-      color: var(--text-dark);
-    }
-
-    body.dark .btn-dark {
-      background: #f6faff;
-      color: #0b0e11;
-    }
-
-    body.dark .btn-dark:hover {
-      background: #dfe7f2;
-    }
-
-    body.dark .member {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    /* Dark theme */
+    body.dark { background: var(--bg-dark); color: var(--text-dark); }
+    body.dark header { background: radial-gradient(circle at 50% 30%, #0f1a2a, #0b0e11 80%); }
+    body.dark .btn-dark { background: #f6faff; color: #0b0e11; }
+    body.dark .member { background: rgba(255, 255, 255, 0.08); }
   </style>
 </head>
 
@@ -202,6 +208,23 @@
   <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
   <header>
+    <canvas id="particles"></canvas>
+
+    <svg class="globe" viewBox="0 0 400 400">
+      <defs>
+        <radialGradient id="grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#007bff" stop-opacity="0.9" />
+          <stop offset="100%" stop-color="#007bff" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="200" cy="200" r="160" stroke="url(#grad)" stroke-width="1" fill="none" />
+      <circle cx="200" cy="200" r="100" stroke="url(#grad)" stroke-width="1" fill="none" />
+      <g id="orbits">
+        <ellipse cx="200" cy="200" rx="170" ry="60" stroke="url(#grad)" fill="none" />
+        <ellipse cx="200" cy="200" rx="60" ry="170" stroke="url(#grad)" fill="none" />
+      </g>
+    </svg>
+
     <img src="logo.png" alt="NEURONOVA Logo" />
     <h1>NEURONOVA</h1>
     <h2>AI Agents Marketplace & Blockchain Ecosystem</h2>
@@ -215,18 +238,6 @@
   <section>
     <h3>🌐 Overview</h3>
     <p><strong>NEURONOVA</strong> — децентрализованный маркетплейс и экосистема для автономных ИИ-агентов, объединённых блокчейн-инфраструктурой.</p>
-    <p>Каждый агент может выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через доверенную систему ZK-доказательств.</p>
-  </section>
-
-  <section>
-    <h3>🚀 Vision & Mission</h3>
-    <p>Создать прозрачную, открытую и автономную экономику ИИ-агентов, где взаимодействие между пользователями, разработчиками и системами строится на доверии и децентрализации.</p>
-  </section>
-
-  <section>
-    <h3>⚡ Problem & Solution</h3>
-    <p><strong>Проблема:</strong> Централизация ИИ, зависимость от корпораций, отсутствие приватности и экономической мотивации.</p>
-    <p><strong>Решение:</strong> NEURONOVA объединяет AI и Blockchain, создавая децентрализованную экосистему с DAO и ZK-доказательствами для прозрачности и приватности.</p>
   </section>
 
   <section>
@@ -244,18 +255,9 @@
   <section>
     <h3>👥 Team</h3>
     <div class="team">
-      <div class="member">
-        <h4>Mikhail Chefonov</h4>
-        <p>Founder & AI Architect</p>
-      </div>
-      <div class="member">
-        <h4>Elena Morozova</h4>
-        <p>Blockchain Developer</p>
-      </div>
-      <div class="member">
-        <h4>Ivan Petrov</h4>
-        <p>Product & Strategy</p>
-      </div>
+      <div class="member"><h4>Mikhail Chefonov</h4><p>Founder & AI Architect</p></div>
+      <div class="member"><h4>Elena Morozova</h4><p>Blockchain Developer</p></div>
+      <div class="member"><h4>Ivan Petrov</h4><p>Product & Strategy</p></div>
     </div>
   </section>
 
@@ -270,21 +272,70 @@
   </section>
 
   <section>
-    <h3>🌍 Contact</h3>
-    <p>Email: <a href="mailto:team@neuronova.ai">team@neuronova.ai</a></p>
-    <p>Twitter / X: <a href="https://twitter.com/" target="_blank">@NeuronovaAI</a></p>
-    <p>Telegram: <a href="https://t.me/" target="_blank">@NeuronovaLabs</a></p>
+    <h3>📩 Contact</h3>
+    <p>Email: <a href="mailto:mchefonov37@gmail.com">mchefonov37@gmail.com</a></p>
+    <p>Telegram: <a href="https://t.me/saboteurxxx" target="_blank">@saboteurxxx</a></p>
   </section>
 
   <footer>© 2025 NEURONOVA — All rights reserved</footer>
 
   <script>
     function toggleTheme() {
-      const body = document.body;
-      body.classList.toggle("dark");
-      const icon = document.querySelector(".theme-toggle");
-      icon.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+      document.body.classList.toggle("dark");
+      document.querySelector(".theme-toggle").textContent =
+        document.body.classList.contains("dark") ? "☀️" : "🌙";
     }
+
+    // Globe rotation
+    const globe = document.querySelector("#orbits");
+    let angle = 0;
+    function rotateGlobe() {
+      angle += 0.2;
+      globe.setAttribute("transform", `rotate(${angle} 200 200)`);
+      requestAnimationFrame(rotateGlobe);
+    }
+    rotateGlobe();
+
+    // Particle field
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 90; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        alpha: Math.random(),
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0,123,255,${p.alpha})`;
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        p.alpha += (Math.random() - 0.5) * 0.05;
+        if (p.alpha < 0.1) p.alpha = 0.1;
+        if (p.alpha > 0.9) p.alpha = 0.9;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
   </script>
 </body>
 </html>
