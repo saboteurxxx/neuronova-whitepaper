@@ -1,168 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ✅ TITLE + DESCRIPTION -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem</title>
-  <meta name="description" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem. Investor White Paper (RU/EN) — November 2025." />
-  <meta name="keywords" content="AI Agents, Blockchain, Web3, Marketplace, ZKML, NEURONOVA, Ethereum, DeFi, DAO, Tokenomics" />
-  <meta name="author" content="NEURONOVA Team" />
-  <meta name="theme-color" content="#007BFF" />
-
-  <!-- ✅ FAVICON -->
-  <link rel="icon" href="logo.png" type="image/png" />
-
-  <!-- ✅ OPEN GRAPH / SOCIAL PREVIEW -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://saboteurxxx.github.io/neuronova-whitepaper/" />
-  <meta property="og:title" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem" />
-  <meta property="og:description" content="Decentralized AI Agents Marketplace & Blockchain Ecosystem. Investor White Paper (RU/EN) — November 2025." />
-  <meta property="og:image" content="https://saboteurxxx.github.io/neuronova-whitepaper/logo.png" />
-
-  <!-- ✅ TWITTER / X CARD -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@neuronova_ai" />
-  <meta name="twitter:title" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem" />
-  <meta name="twitter:description" content="Decentralized AI Agents Marketplace & Blockchain Ecosystem. Investor White Paper (RU/EN) — November 2025." />
-  <meta name="twitter:image" content="https://saboteurxxx.github.io/neuronova-whitepaper/logo.png" />
-
-  <!-- ✅ FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- ✅ STYLE -->
   <style>
-    :root {
-      --blue: #007BFF;
-      --dark: #0B1221;
-      --light: #F6FAFF;
-    }
     body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(to bottom, #F6FAFF, #FFFFFF);
       margin: 0;
-      font-family: 'Inter', 'Segoe UI', sans-serif;
-      background: linear-gradient(180deg, var(--light) 0%, #FFFFFF 100%);
-      color: var(--dark);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    main {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 24px;
+      padding: 0;
+      color: #0a2342;
       text-align: center;
     }
-    img.logo {
+    header {
+      padding: 60px 20px 20px;
+    }
+    header img {
       width: 120px;
-      margin: 40px auto 10px;
-      display: block;
+      margin-bottom: 10px;
     }
     h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 10px 0 20px;
+      font-size: 28px;
+      margin-bottom: 5px;
     }
     h2 {
-      font-size: 1.1rem;
+      color: #0074d9;
+      font-size: 18px;
       font-weight: 500;
-      color: var(--dark);
-      margin-top: 40px;
-      text-align: left;
     }
-    .subtitle {
-      font-style: italic;
-      font-weight: 500;
-      color: #333;
-    }
-    .button-group {
-      margin: 20px 0 40px;
-    }
-    .button {
+    .btn {
       display: inline-block;
+      background: #0074d9;
+      color: #fff;
       text-decoration: none;
-      padding: 10px 18px;
+      padding: 12px 22px;
       border-radius: 8px;
       font-weight: 600;
-      margin: 5px;
-      font-size: 0.9rem;
-      transition: 0.2s ease-in-out;
+      margin: 10px 5px;
+      transition: background 0.3s;
     }
-    .btn-download {
-      background: var(--dark);
-      color: white;
-    }
-    .btn-whitepaper {
-      background: var(--blue);
-      color: white;
-    }
-    .button:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
+    .btn:hover {
+      background: #005fa3;
     }
     section {
+      max-width: 800px;
+      margin: 40px auto;
       text-align: left;
-      margin-bottom: 40px;
+      padding: 0 20px;
     }
-    hr {
-      border: none;
-      border-top: 1px solid #E0E6ED;
-      margin: 40px 0;
+    h3 {
+      border-left: 4px solid #0074d9;
+      padding-left: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #d9e4f5;
+      padding: 8px;
+      text-align: left;
     }
     footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: #777;
-      margin-top: 60px;
+      margin-top: 50px;
+      padding: 20px;
+      background: #f4f9ff;
+      color: #4b6584;
+      font-size: 14px;
     }
   </style>
 </head>
-
 <body>
-  <main>
-    <img src="logo.png" alt="NEURONOVA Logo" class="logo" />
+  <header>
+    <img src="logo.png" alt="Neuronova Logo">
     <h1>NEURONOVA</h1>
-    <p class="subtitle">AI Agents Marketplace & Blockchain Ecosystem</p>
-    <p><strong>Investor White Paper (RU/EN)</strong> — November 2025</p>
+    <h2>AI Agents Marketplace & Blockchain Ecosystem</h2>
+    <a href="neuronova-whitepaper.zip" class="btn">📄 Download White Paper (RU/EN)</a>
+    <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn" style="background:#0a2342;">⭐ View on GitHub</a>
+  </header>
 
-    <div class="button-group">
-      <a href="neuronova-whitepaper.zip" class="button btn-download">📄 Download</a>
-      <a href="https://saboteurxxx.github.io/neuronova-whitepaper/" class="button btn-whitepaper">🌐 Whitepaper</a>
-    </div>
+  <section>
+    <h3>Overview</h3>
+    <p>NEURONOVA — децентрализованный маркетплейс и экосистема для автономных ИИ-агентов, объединённых с блокчейн-инфраструктурой.</p>
+    <p>Каждый агент может выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через доверенную систему ZK-доказательств.</p>
+  </section>
 
-    <hr />
+  <section>
+    <h3>Vision & Mission</h3>
+    <p>Создать прозрачную и автономную экономику ИИ-агентов, где взаимодействие между пользователями, разработчиками и системами будет строиться на принципах доверия и децентрализации.</p>
+  </section>
 
-    <section id="overview">
-      <h2>🌐 Overview</h2>
-      <p><strong>NEURONOVA</strong> — это децентрализованный маркетплейс и экосистема для автономных ИИ-агентов, объединённых с блокчейн-инфраструктурой. Каждый агент может выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через доверенную систему ZK-доказательств.</p>
-      <p><strong>NEURONOVA</strong> aims to redefine how AI systems interact with the blockchain economy — creating a transparent, token-driven, autonomous ecosystem.</p>
-    </section>
+  <section>
+    <h3>Technology Stack</h3>
+    <table>
+      <tr><th>Frontend</th><td>Next.js, React</td></tr>
+      <tr><th>Backend</th><td>Node.js, NestJS</td></tr>
+      <tr><th>AI Engine</th><td>Python, FastAPI, LangChain</td></tr>
+      <tr><th>Blockchain</th><td>Ethereum L2 (zkSync / Base / Starknet)</td></tr>
+      <tr><th>Storage</th><td>IPFS, PostgreSQL</td></tr>
+      <tr><th>ZK / KYC Layer</th><td>Polygon ID, EZKL</td></tr>
+    </table>
+  </section>
 
-    <section id="vision">
-      <h2>🚀 Vision & Mission</h2>
-      <p>Создание экономики, где ИИ-агенты становятся самостоятельными участниками цифрового мира, работающими, зарабатывающими и взаимодействующими напрямую с пользователями.</p>
-      <p>The mission is to unlock the full potential of decentralized AI and make it accessible to businesses, developers, and everyday users worldwide.</p>
-    </section>
-
-    <section id="tech">
-      <h2>🧠 Tech Stack</h2>
-      <ul>
-        <li><strong>AI Core:</strong> Python, TensorFlow, LangChain</li>
-        <li><strong>Blockchain:</strong> Solidity, zkSync, Ethereum Layer 2</li>
-        <li><strong>Storage:</strong> IPFS, Filecoin</li>
-        <li><strong>Frontend:</strong> Next.js, TailwindCSS</li>
-        <li><strong>Infrastructure:</strong> Docker, AWS</li>
-      </ul>
-    </section>
-
-    <section id="tokenomics">
-      <h2>💎 Tokenomics</h2>
-      <p>The NEURONOVA Token (NOVA) powers the entire ecosystem — enabling agent payments, governance, and staking within the marketplace.</p>
-    </section>
-
-    <footer>
-      © 2025 NEURONOVA — All rights reserved.  
-      <br>Confidential Investor White Paper v1.0
-    </footer>
-  </main>
+  <footer>
+    © 2025 NEURONOVA. All rights reserved. | Confidential Draft v1.0
+  </footer>
 </body>
 </html>
