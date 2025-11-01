@@ -3,11 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ TITLE + DESCRIPTION -->
   <title>NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem</title>
   <meta name="description" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem. Investor White Paper (RU/EN) — November 2025." />
+  <meta name="keywords" content="AI Agents, Blockchain, Web3, Marketplace, ZKML, NEURONOVA, Ethereum, DeFi, DAO, Tokenomics" />
+  <meta name="author" content="NEURONOVA Team" />
+  <meta name="theme-color" content="#007BFF" />
+
+  <!-- ✅ FAVICON -->
   <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- ✅ OPEN GRAPH / SOCIAL PREVIEW -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://saboteurxxx.github.io/neuronova-whitepaper/" />
+  <meta property="og:title" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem" />
+  <meta property="og:description" content="Decentralized AI Agents Marketplace & Blockchain Ecosystem. Investor White Paper (RU/EN) — November 2025." />
+  <meta property="og:image" content="https://saboteurxxx.github.io/neuronova-whitepaper/logo.png" />
+
+  <!-- ✅ TWITTER / X CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@neuronova_ai" />
+  <meta name="twitter:title" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem" />
+  <meta name="twitter:description" content="Decentralized AI Agents Marketplace & Blockchain Ecosystem. Investor White Paper (RU/EN) — November 2025." />
+  <meta name="twitter:image" content="https://saboteurxxx.github.io/neuronova-whitepaper/logo.png" />
+
+  <!-- ✅ FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- ✅ STYLE -->
   <style>
-    /* --- Base --- */
     :root {
       --blue: #007BFF;
       --dark: #0B1221;
@@ -21,188 +46,123 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
-
-    /* --- Header + Nav --- */
-    header {
+    main {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 24px;
       text-align: center;
-      padding: 60px 20px 40px;
-      position: relative;
     }
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.9);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      z-index: 10;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 12px 0;
-      transition: 0.3s;
-    }
-    nav a {
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: var(--blue);
-    }
-
-    /* --- Logo --- */
     img.logo {
-      width: 110px;
-      margin-bottom: 20px;
-    }
-
-    /* --- Sections --- */
-    section {
-      max-width: 850px;
-      margin: 80px auto;
-      padding: 0 25px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+      width: 120px;
+      margin: 40px auto 10px;
+      display: block;
     }
     h1 {
-      font-size: 2.3rem;
-      color: var(--dark);
-      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 10px 0 20px;
     }
     h2 {
-      color: var(--blue);
+      font-size: 1.1rem;
       font-weight: 500;
+      color: var(--dark);
+      margin-top: 40px;
+      text-align: left;
     }
-    h3 {
-      border-left: 4px solid var(--blue);
-      padding-left: 10px;
+    .subtitle {
+      font-style: italic;
+      font-weight: 500;
+      color: #333;
     }
-    ul {
-      list-style: none;
-      padding-left: 10px;
+    .button-group {
+      margin: 20px 0 40px;
     }
-    ul li::before {
-      content: "• ";
-      color: var(--blue);
-    }
-
-    /* --- Buttons --- */
     .button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 26px;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 5px;
+      font-size: 0.9rem;
+      transition: 0.2s ease-in-out;
+    }
+    .btn-download {
+      background: var(--dark);
+      color: white;
+    }
+    .btn-whitepaper {
       background: var(--blue);
       color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
     }
     .button:hover {
-      background: #005FCC;
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
-
-    /* --- Roadmap --- */
-    .roadmap li {
-      background: rgba(0,123,255,0.05);
-      border-left: 4px solid var(--blue);
-      margin: 10px 0;
-      padding: 10px 15px;
-      border-radius: 6px;
+    section {
+      text-align: left;
+      margin-bottom: 40px;
     }
-
-    /* --- Footer --- */
+    hr {
+      border: none;
+      border-top: 1px solid #E0E6ED;
+      margin: 40px 0;
+    }
     footer {
       text-align: center;
-      padding: 40px;
-      font-size: 0.9rem;
-      color: #888;
-      background: #fafcff;
-    }
-
-    /* --- Scroll Animation --- */
-    @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 60px;
     }
   </style>
 </head>
 
 <body>
-  <nav>
-    <a href="#overview">Overview</a>
-    <a href="#vision">Vision</a>
-    <a href="#tech">Tech Stack</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="neuronova-whitepaper.zip">Whitepaper</a>
-  </nav>
-
-  <header>
+  <main>
     <img src="logo.png" alt="NEURONOVA Logo" class="logo" />
     <h1>NEURONOVA</h1>
-    <h2>AI Agents Marketplace & Blockchain Ecosystem</h2>
-    <a href="neuronova-whitepaper.zip" class="button">📄 Download White Paper (RU/EN)</a>
-  </header>
+    <p class="subtitle">AI Agents Marketplace & Blockchain Ecosystem</p>
+    <p><strong>Investor White Paper (RU/EN)</strong> — November 2025</p>
 
-  <section id="overview">
-    <h3>🌐 Overview</h3>
-    <p><strong>NEURONOVA</strong> — децентрализованный маркетплейс и экосистема автономных ИИ-агентов, объединённых с блокчейн-инфраструктурой.</p>
-    <p>Каждый агент способен выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через систему ZK-доказательств.</p>
-  </section>
+    <div class="button-group">
+      <a href="neuronova-whitepaper.zip" class="button btn-download">📄 Download</a>
+      <a href="https://saboteurxxx.github.io/neuronova-whitepaper/" class="button btn-whitepaper">🌐 Whitepaper</a>
+    </div>
 
-  <section id="vision">
-    <h3>🎯 Vision & Mission</h3>
-    <p>Создание экономики, где ИИ-агенты становятся самостоятельными участниками цифрового мира, работающими, зарабатывающими и взаимодействующими напрямую с пользователями.</p>
-  </section>
+    <hr />
 
-  <section id="tech">
-    <h3>⚙️ Technology Stack</h3>
-    <ul>
-      <li><b>Frontend:</b> Next.js, React</li>
-      <li><b>Backend:</b> Node.js, NestJS</li>
-      <li><b>AI Engine:</b> Python, FastAPI, LangChain</li>
-      <li><b>Blockchain:</b> Ethereum L2 (zkSync / Base / Starknet)</li>
-      <li><b>Storage:</b> IPFS, PostgreSQL</li>
-      <li><b>ZK/KYC Layer:</b> Polygon ID, EZKL</li>
-    </ul>
-  </section>
+    <section id="overview">
+      <h2>🌐 Overview</h2>
+      <p><strong>NEURONOVA</strong> — это децентрализованный маркетплейс и экосистема для автономных ИИ-агентов, объединённых с блокчейн-инфраструктурой. Каждый агент может выполнять задачи, зарабатывать токены и взаимодействовать с другими агентами через доверенную систему ZK-доказательств.</p>
+      <p><strong>NEURONOVA</strong> aims to redefine how AI systems interact with the blockchain economy — creating a transparent, token-driven, autonomous ecosystem.</p>
+    </section>
 
-  <section id="roadmap">
-    <h3>📅 Roadmap 2025</h3>
-    <ul class="roadmap">
-      <li>✅ Q1 — MVP Marketplace (Testnet)</li>
-      <li>⏳ Q2 — ZKML Integration + DAO Alpha</li>
-      <li>🧩 Q3 — Tokenomics Release</li>
-      <li>🚀 Q4 — Mainnet Launch + Partnerships</li>
-    </ul>
-  </section>
+    <section id="vision">
+      <h2>🚀 Vision & Mission</h2>
+      <p>Создание экономики, где ИИ-агенты становятся самостоятельными участниками цифрового мира, работающими, зарабатывающими и взаимодействующими напрямую с пользователями.</p>
+      <p>The mission is to unlock the full potential of decentralized AI and make it accessible to businesses, developers, and everyday users worldwide.</p>
+    </section>
 
-  <footer>
-    © 2025 NEURONOVA — All Rights Reserved. <br />
-    Confidential Investor White Paper v1.0
-  </footer>
+    <section id="tech">
+      <h2>🧠 Tech Stack</h2>
+      <ul>
+        <li><strong>AI Core:</strong> Python, TensorFlow, LangChain</li>
+        <li><strong>Blockchain:</strong> Solidity, zkSync, Ethereum Layer 2</li>
+        <li><strong>Storage:</strong> IPFS, Filecoin</li>
+        <li><strong>Frontend:</strong> Next.js, TailwindCSS</li>
+        <li><strong>Infrastructure:</strong> Docker, AWS</li>
+      </ul>
+    </section>
 
-  <script>
-    // Scroll animation for sections
-    const sections = document.querySelectorAll("section");
-    const reveal = () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
-    };
-    window.addEventListener("scroll", reveal);
-    reveal(); // trigger on load
-  </script>
+    <section id="tokenomics">
+      <h2>💎 Tokenomics</h2>
+      <p>The NEURONOVA Token (NOVA) powers the entire ecosystem — enabling agent payments, governance, and staking within the marketplace.</p>
+    </section>
+
+    <footer>
+      © 2025 NEURONOVA — All rights reserved.  
+      <br>Confidential Investor White Paper v1.0
+    </footer>
+  </main>
 </body>
 </html>
