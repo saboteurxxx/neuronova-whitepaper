@@ -1,131 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>NEURONOVA — AI Agents Marketplace</title>
-  <link rel="icon" type="image/png" href="favicon-32.png"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem" />
+  <title>NEURONOVA v2.0</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
+    /* --- RESET --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: Inter, Arial, sans-serif;
-      background: linear-gradient(180deg, #04050A 0%, #071226 55%);
-      color: #e8f0ff;
-      margin: 0;
-      padding: 0;
-    }
-    .center {
+      font-family: 'Inter', sans-serif;
+      color: white;
+      background: radial-gradient(ellipse at top, #071226, #04050A 60%);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 48px 16px;
+      height: 100vh;
+      text-align: center;
     }
+
+    /* --- LOGO --- */
     .logo {
-      width: 180px;
-      height: 180px;
-      display: block;
+      width: 160px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      filter: drop-shadow(0 0 12px rgba(0, 185, 255, 0.6));
     }
-    .hero-title {
-      font-size: 32px;
-      margin: 18px 0 6px;
-      letter-spacing: 2px;
+
+    /* --- TITLE --- */
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      background: linear-gradient(90deg, #42b3ff, #89d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 150, 255, 0.3);
+      animation: glowText 3s ease-in-out infinite alternate;
     }
-    .lead {
-      max-width: 900px;
-      color: #bcdcffb8;
-      text-align: center;
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 25px rgba(0, 160, 255, 0.3); }
+      to { text-shadow: 0 0 45px rgba(0, 200, 255, 0.6); }
     }
-    .ctas {
+
+    p {
+      color: #a8b3c3;
+      margin-top: 8px;
+      font-size: 1.1rem;
+    }
+
+    /* --- BUTTONS --- */
+    .btn-group {
+      margin-top: 35px;
       display: flex;
-      flex-wrap: wrap;
+      gap: 16px;
       justify-content: center;
-      gap: 12px;
-      margin-top: 18px;
     }
-    a.btn {
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: 0.25s;
+
+    .btn {
+      background: linear-gradient(90deg, #009dff, #5d4eff);
+      border: none;
+      color: white;
+      font-size: 1rem;
+      padding: 12px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 155, 255, 0.4);
     }
-    a.primary {
-      background: linear-gradient(90deg, #00cfff, #8c3fff);
-      color: #021025;
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
     }
-    a.ghost {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #cfe6ff;
+
+    /* --- 3D Sphere Glow --- */
+    .sphere {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at 30% 30%, rgba(0, 185, 255, 0.3), transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: pulse 5s ease-in-out infinite;
+      z-index: -1;
     }
-    a.btn:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.15); }
     }
+
+    /* --- FOOTER --- */
     footer {
-      color: #9fb7ff88;
-      text-align: center;
-      padding: 40px 0;
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #6b7c93;
     }
-    #fallback {
-      display: none;
-      margin-top: 18px;
+
+    footer a {
+      color: #00b3ff;
+      text-decoration: none;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .btn { padding: 10px 20px; }
+      .sphere { width: 260px; height: 260px; }
     }
   </style>
 </head>
+
 <body>
-  <div id="progress" style="position:fixed;left:0;top:0;height:4px;background:linear-gradient(90deg,#00cfff,#8c3fff);width:0;z-index:9999"></div>
+  <div class="sphere"></div>
+  <img src="logo-transparent.png" alt="NEURONOVA logo" class="logo" />
+  <h1>NEURONOVA</h1>
+  <p>Building a trusted economy of autonomous AI agents.</p>
 
-  <header class='center'>
-    <img src='logo-hex-neural.png' alt='NEURONOVA logo' class='logo' id='mainLogo'/>
-    <h1 class='hero-title'>NEURONOVA</h1>
-    <p class='lead'>Building a trusted economy of autonomous AI agents.</p>
-
-    <div class='ctas'>
-      <a class='btn primary' href='neuronova-v2.0-landing.zip' download>
-        ⬇️ Download Whitepaper
-      </a>
-      <a class='btn ghost' href='https://github.com/saboteurxxx/neuronova-whitepaper' target='_blank'>
-        💻 GitHub
-      </a>
-    </div>
-
-    <img id='fallback' src='logo-hex-neural.png' alt='logo fallback' width='220'/>
-  </header>
-
-  <section style='padding:40px 16px;text-align:center'>
-    <div style='max-width:1100px;margin:0 auto;color:#cfe3ffb0'>
-      <h2 style='color:#a8c8ff'>How it works</h2>
-      <p>Experience the 3D WebGL demo of the NEURONOVA network directly on this page.<br>
-      If your browser doesn't support WebGL, the static logo preview will be shown instead.</p>
-    </div>
-  </section>
+  <div class="btn-group">
+    <a href="neuronova-whitepaper.pdf" class="btn">📘 Download Whitepaper</a>
+    <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn">💠 GitHub</a>
+  </div>
 
   <footer>
     © 2025 NEURONOVA — All rights reserved • 
-    <a href='mailto:mchefonov37@gmail.com' style='color:#bcdcff'>mchefonov37@gmail.com</a> • 
-    <a href='https://t.me/saboteurxxx' style='color:#bcdcff'>@saboteurxxx</a>
+    <a href="mailto:mchefonov37@gmail.com">mchefonov37@gmail.com</a>
   </footer>
-
-  <script src='https://unpkg.com/three@0.163.0/build/three.min.js'></script>
-  <script src='js/neuronova-core.js'></script>
-  <script>
-    const prog = document.getElementById('progress');
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      prog.style.width = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100 + '%';
-    });
-    function isWebGLAvailable() {
-      try {
-        var canvas = document.createElement('canvas');
-        return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
-      } catch (e) {
-        return false;
-      }
-    }
-    if (!isWebGLAvailable()) {
-      document.getElementById('fallback').style.display = 'block';
-    }
-  </script>
 </body>
 </html>
