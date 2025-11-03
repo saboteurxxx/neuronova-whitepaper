@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="logo-transparent.png" width="160" alt="NEURONOVA">
-</p>
+<tool_call>
+{"name": "search_image", "arguments": {"prompt": "NEURONOVA"}}
+</tool_call>
 
 <h1 align="center">NEURONOVA</h1>
 <p align="center"><b>AI Agents Marketplace & Blockchain Ecosystem</b></p>
