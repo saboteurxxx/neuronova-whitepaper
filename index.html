@@ -3,142 +3,389 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NEURONOVA — AI Agents Marketplace & Blockchain Ecosystem" />
-  <title>NEURONOVA v2.0</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <title>NEURONOVA v3.0</title>
   <style>
-    /* --- RESET --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
 
     body {
-      font-family: 'Inter', sans-serif;
-      color: white;
-      background: radial-gradient(ellipse at top, #071226, #04050A 60%);
+      margin: 0;
       overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, #04050A, #071226 90%);
+      color: #cfdfff;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    /* Intro */
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: #04050a;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      z-index: 999;
+      color: #0ff;
+      letter-spacing: 1px;
+      animation: fadeOut 1s ease 3s forwards;
+    }
+
+    .loader {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, #00ffff, transparent);
+      animation: load 3s linear infinite;
+    }
+
+    @keyframes load {
+      0% { transform: translateX(-50px); }
+      100% { transform: translateX(50px); }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* Контент */
+    #content {
+      position: relative;
+      width: 100vw;
       height: 100vh;
-      text-align: center;
+      overflow: hidden;
     }
 
-    /* --- LOGO --- */
-    .logo {
-      width: 160px;
+    .hidden {
       opacity: 0;
-      animation: fadeIn 2s ease forwards;
-      filter: drop-shadow(0 0 12px rgba(0, 185, 255, 0.6));
+      transition: opacity 2s ease 4s;
     }
 
-    /* --- TITLE --- */
+    canvas#bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    /* Overlay — СМЕЩЁНО ВПРАВО */
+    .overlay {
+      position: absolute;
+      right: 10%;
+      top: 20vh;
+      text-align: center;
+      z-index: 2;
+      max-width: 500px;
+    }
+
     h1 {
       font-size: 2.5rem;
-      letter-spacing: 1px;
-      margin-top: 20px;
-      background: linear-gradient(90deg, #42b3ff, #89d4ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(0, 150, 255, 0.3);
-      animation: glowText 3s ease-in-out infinite alternate;
+      color: #00ccff;
+      text-shadow: 0 0 15px #00ffff;
+      margin: 0;
+      padding: 0;
     }
 
-    @keyframes glowText {
-      from { text-shadow: 0 0 25px rgba(0, 160, 255, 0.3); }
-      to { text-shadow: 0 0 45px rgba(0, 200, 255, 0.6); }
+    .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin: 0.5rem 0 1.5rem;
+      text-align: left;
     }
 
-    p {
-      color: #a8b3c3;
-      margin-top: 8px;
-      font-size: 1.1rem;
-    }
-
-    /* --- BUTTONS --- */
-    .btn-group {
-      margin-top: 35px;
+    .buttons {
+      margin-top: 1rem;
       display: flex;
-      gap: 16px;
       justify-content: center;
+      gap: 1rem;
     }
 
     .btn {
-      background: linear-gradient(90deg, #009dff, #5d4eff);
-      border: none;
-      color: white;
-      font-size: 1rem;
-      padding: 12px 24px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(0, 155, 255, 0.4);
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, #00eaff, #0077ff);
+      color: #fff;
+      box-shadow: 0 0 15px #00bfff80;
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #00bfff;
+      color: #00d4ff;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 25px rgba(0, 180, 255, 0.8);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00bfff;
     }
 
-    /* --- 3D Sphere Glow --- */
-    .sphere {
-      position: absolute;
-      width: 380px;
-      height: 380px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle at 30% 30%, rgba(0, 185, 255, 0.3), transparent 70%);
+    /* Workflow Animation — СМЕЩЁНО ВПРАВО */
+    .workflow {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      max-width: 400px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateX(30px) scale(0.9);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .step.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .step-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 200, 255, 0.1);
+      border: 1px solid #00bfff;
       border-radius: 50%;
-      filter: blur(60px);
-      animation: pulse 5s ease-in-out infinite;
-      z-index: -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px #00bfff40;
+      animation: pulse 2s infinite alternate;
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.15); }
+      0% { box-shadow: 0 0 10px #00bfff40; transform: scale(1); }
+      100% { box-shadow: 0 0 25px #00bfff80; transform: scale(1.05); }
     }
 
-    /* --- FOOTER --- */
+    .step-title {
+      font-size: 0.9rem;
+      color: #00ccff;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .step-desc {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      max-width: 200px;
+      text-align: left;
+    }
+
+    .arrow {
+      width: 15px;
+      height: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #00bfff;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Footer */
     footer {
       position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      color: #6b7c93;
+      bottom: 15px;
+      right: 10%;
+      font-size: 0.7rem;
+      opacity: 0.7;
+      text-align: right;
     }
 
-    footer a {
-      color: #00b3ff;
-      text-decoration: none;
+    /* Цифры — всплывают снизу, летят вверх, растворяются сверху */
+    .digit {
+      position: fixed;
+      font-size: 16px;
+      font-weight: bold;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      p { font-size: 1rem; }
-      .btn { padding: 10px 20px; }
-      .sphere { width: 260px; height: 260px; }
+    .digit.visible {
+      opacity: 1;
     }
   </style>
 </head>
-
 <body>
-  <div class="sphere"></div>
-  <img src="logo-transparent.png" alt="NEURONOVA logo" class="logo" />
-  <h1>NEURONOVA</h1>
-  <p>Building a trusted economy of autonomous AI agents.</p>
-
-  <div class="btn-group">
-    <a href="neuronova-whitepaper.pdf" class="btn">📘 Download Whitepaper</a>
-    <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn">💠 GitHub</a>
+  <!-- Intro загрузка -->
+  <div id="intro">
+    <div class="intro-text">
+      <p>Initializing NEURONOVA Core...</p>
+      <div class="loader"></div>
+    </div>
   </div>
 
-  <footer>
-    © 2025 NEURONOVA — All rights reserved • 
-    <a href="mailto:mchefonov37@gmail.com">mchefonov37@gmail.com</a>
-  </footer>
+  <!-- Основной контент -->
+  <div id="content" class="hidden">
+    <canvas id="bg"></canvas>
+
+    <!-- Контент справа -->
+    <div class="overlay">
+      <h1>NEURONOVA</h1>
+      <p class="subtitle">Building a trusted economy of autonomous AI agents with ZK-proofs & blockchain</p>
+
+      <div class="buttons">
+        <a href="https://saboteurxxx.github.io/neuronova-whitepaper/" class="btn primary">Download Whitepaper</a>
+        <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn secondary">GitHub</a>
+      </div>
+
+      <div class="workflow">
+        <div class="step" id="step1">
+          <div class="step-icon">👤</div>
+          <div>
+            <div class="step-title">User Request</div>
+            <div class="step-desc">Submit task via UI or API</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" id="step2">
+          <div class="step-icon">🤖</div>
+          <div>
+            <div class="step-title">AI Agent</div>
+            <div class="step-desc">Autonomous agent executes task</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" id="step3">
+          <div class="step-icon">🔒</div>
+          <div>
+            <div class="step-title">ZKML Proof</div>
+            <div class="step-desc">Proves correctness without revealing data</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" id="step4">
+          <div class="step-icon">⛓️</div>
+          <div>
+            <div class="step-title">Blockchain</div>
+            <div class="step-desc">On zkSync Era / Starknet — gas-efficient</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step" id="step5">
+          <div class="step-icon">💰</div>
+          <div>
+            <div class="step-title">Token Reward</div>
+            <div class="step-desc">Agent earns tokens for verified work</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 NEURONOVA — All rights reserved • 
+      <a href="mailto:mchefonov37@gmail.com">mchefonov37@gmail.com</a> •
+      <a href="https://x.com/saboteurxxx" target="_blank">@saboteurxxx</a>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // 3D сфера слева
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    const geometry = new THREE.SphereGeometry(2, 32, 32);
+    const material = new THREE.PointsMaterial({
+      color: 0x0066ff,
+      size: 0.03,
+      transparent: true,
+      opacity: 0.8
+    });
+
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+    camera.position.z = 5;
+
+    // Цифры: всплывают снизу → летят вверх → растворяются
+    const digits = [];
+    const colors = ['#00ffff', '#00ccff', '#0099ff', '#0066ff'];
+
+    function createDigit() {
+      const div = document.createElement("div");
+      div.className = "digit";
+      div.innerText = Math.floor(Math.random() * 10);
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      div.style.color = color;
+      div.style.textShadow = `0 0 8px ${color}, 0 0 16px ${color}`;
+      document.body.appendChild(div);
+
+      const x = Math.random() * window.innerWidth;
+      const y = window.innerHeight + 20;
+      const speed = 0.6 + Math.random() * 1.2;
+
+      const digit = { el: div, x, y, speed, opacity: 0 };
+      digits.push(digit);
+
+      // Появление
+      setTimeout(() => {
+        digit.opacity = 1;
+        digit.el.style.opacity = digit.opacity;
+        digit.el.classList.add('visible');
+      }, Math.random() * 1000);
+    }
+
+    // Генерация
+    setInterval(() => {
+      if (digits.length < 50) createDigit();
+    }, 250);
+
+    // Анимация
+    function animate() {
+      // Обновление сферы
+      points.rotation.y += 0.002;
+      points.rotation.x += 0.001;
+      renderer.render(scene, camera);
+
+      // Обновление цифр
+      for (let i = digits.length - 1; i >= 0; i--) {
+        const d = digits[i];
+        d.y -= d.speed;
+        d.el.style.transform = `translate(${d.x}px, ${d.y}px)`;
+
+        // Растворение вверху
+        if (d.y < -20) {
+          d.opacity -= 0.03;
+          d.el.style.opacity = d.opacity;
+          if (d.opacity <= 0) {
+            d.el.remove();
+            digits.splice(i, 1);
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Запуск
+    setTimeout(() => {
+      document.getElementById('content').classList.remove('hidden');
+      const steps = document.querySelectorAll('.step');
+      steps.forEach((s, i) => setTimeout(() => s.classList.add('active'), 500 + i * 250));
+    }, 4000);
+
+    animate();
+  </script>
 </body>
 </html>
+
