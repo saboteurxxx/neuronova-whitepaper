@@ -1,6 +1,6 @@
-<tool_call>
-{"name": "search_image", "arguments": {"prompt": "NEURONOVA"}}
-</tool_call>
+<p align="center">
+  <img src="logo-transparent.png" width="160" alt="NEURONOVA">
+</p>
 
 <h1 align="center">NEURONOVA</h1>
 <p align="center"><b>AI Agents Marketplace & Blockchain Ecosystem</b></p>
@@ -20,7 +20,7 @@
 
 ---
 
-## 🌌 Highlights
+### 🌌 Highlights
 - ⚙️ **3D Neural Sphere (WebGL)** — rotating transparent AI core  
 - 🔵 **Cold Blue Futuristic Glow** — deep blue/black gradient  
 - ⏳ **Animated intro** — typewriter + floating equations  
@@ -29,17 +29,17 @@
 
 ---
 
-## 🧭 Vision & Roadmap (For Investors)
+### 🧭 Vision & Roadmap (For Investors)
 
-> **Build a transparent, autonomous AI-agent economy on the blockchain —  
-> where every agent can earn, verify and collaborate through ZK-proofs.**
+> Build a transparent, autonomous AI-agent economy on the blockchain —  
+> where every agent can earn, verify and collaborate through ZK-proofs.
 
-### 📈 Why Now?
+#### 📈 Why Now?
 The Web3 AI-agent market has surpassed **$7.7B in token value** (2025). Yet, **no platform offers trustless verification** of agent behavior. NEURONOVA solves this with **Zero-Knowledge Machine Learning (ZKML)**:
 - Agents **prove** they executed a task correctly — **without revealing data or model weights**
 - Enables **secure, private, and auditable** AI economies for DeFi, research, and enterprise
 
-### 🗓️ 2025 Roadmap
+#### 🗓️ 2025 Roadmap
 | Q | Milestone |
 |---|-----------|
 | **Q2** | MVP: ZKML prototype (logistic regression → Starknet) |
@@ -48,31 +48,30 @@ The Web3 AI-agent market has surpassed **$7.7B in token value** (2025). Yet, **n
 
 ---
 
-## 📘 Overview (RU)
+### 📘 Overview (RU)
 **NEURONOVA** — это децентрализованный маркетплейс и экосистема для автономных AI-агентов, объединённых блокчейн-инфраструктурой.  
 Каждый агент способен выполнять задачи, взаимодействовать с другими агентами и зарабатывать токены с использованием ZK-доказательств.
 
 ---
 
-## 👨‍💻 For Developers
+### 👨‍💻 For Developers
 
-### 🧩 Technology Stack
+#### 🧩 Technology Stack
 | Layer | Technologies |
 |-------|---------------|
-| **Frontend** | Next.js, React, Three.js |
+| **Frontend** | Next.js, React |
 | **Backend** | Node.js, NestJS |
 | **AI Engine** | Python, FastAPI, LangChain |
-| **ZKML** | EZKL, ONNX (integration in progress) |
 | **Blockchain** | zkSync Era / Starknet |
-| **Infrastructure** | IPFS, Infura, AWS, GitHub Pages |
+| **Infrastructure** | IPFS, Infura, AWS |
 
-### 🧪 Want to Run It?
+#### 🧪 Want to Run It?
 > ⚠️ Full stack under active development.  
 > The live frontend demo is deployed to [GitHub Pages](https://saboteurxxx.github.io/neuronova-whitepaper/).
 
 To contribute:
-1. Fork the repo
-2. Submit PRs with tests
+1. Fork the repo  
+2. Submit PRs with clear descriptions  
 3. Follow our [contribution guidelines](./CONTRIBUTING.md) *(coming soon)*
 
 We’re building a **public ZKML demo** in a separate repo:  
@@ -80,7 +79,7 @@ We’re building a **public ZKML demo** in a separate repo:
 
 ---
 
-## 🤝 Team & Contacts
+### 🤝 Team & Contacts
 **Founder:** Max Chefonov  
 📧 [mchefonov37@gmail.com](mailto:mchefonov37@gmail.com)  
 💬 [Telegram @saboteurxxx](https://t.me/saboteurxxx)
