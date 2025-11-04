@@ -14,7 +14,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
     .container {
       max-width: 800px;
@@ -26,16 +26,16 @@
       filter: drop-shadow(0 0 12px rgba(42, 91, 218, 0.6));
     }
     h1 {
-      font-size: 2.5rem;
-      margin: 0 0 12px;
+      font-size: 2.8rem;
+      margin: 0 0 16px;
       background: linear-gradient(to right, #88c0f7, #2a5bda);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 32px;
-      opacity: 0.9;
+      opacity: 0.95;
     }
     .highlights {
       text-align: left;
@@ -55,35 +55,29 @@
       color: #2a5bda;
       margin-right: 8px;
     }
-    .buttons {
-      margin: 32px 0;
-    }
     .btn {
       display: inline-block;
-      margin: 0 12px;
-      padding: 12px 24px;
-      border-radius: 8px;
+      margin: 12px;
+      padding: 14px 28px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-whitepaper {
+      color: white;
       background: #8a2be2;
-      color: white;
+      transition: all 0.3s;
     }
-    .btn-github {
+    .btn.github {
       background: #000;
-      color: white;
     }
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
     }
     footer {
       margin-top: auto;
-      padding-top: 32px;
-      font-size: 0.9rem;
-      opacity: 0.7;
+      padding-top: 40px;
+      font-size: 0.95rem;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -92,6 +86,11 @@
     <img src="logo-transparent.png" alt="NEURONOVA" class="logo" />
     <h1>NEURONOVA</h1>
     <p class="subtitle"><b>AI Agents Marketplace & Blockchain Ecosystem</b></p>
+
+    <blockquote>
+      Build a transparent, autonomous AI-agent economy on the blockchain —<br>
+      where every agent can earn, verify and collaborate through ZK-proofs.
+    </blockquote>
 
     <div class="highlights">
       <ul>
@@ -103,19 +102,12 @@
       </ul>
     </div>
 
-    <blockquote>
-      Build a transparent, autonomous AI-agent economy on the blockchain —<br>
-      where every agent can earn, verify and collaborate through ZK-proofs.
-    </blockquote>
-
-    <div class="buttons">
-      <a href="https://saboteurxxx.github.io/neuronova-whitepaper/" class="btn btn-whitepaper">Whitepaper v2.0</a>
-      <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn btn-github">View on GitHub</a>
-    </div>
+    <a href="NEURONOVA_Whitepaper_v2.0.pdf" class="btn">Download Whitepaper</a>
+    <a href="https://github.com/saboteurxxx/neuronova-whitepaper" class="btn github">GitHub</a>
 
     <footer>
       © 2025 NEURONOVA — All rights reserved.<br>
-      Founder: Max Chefonov | 
+      Founder: Mihail Chefonov | 
       <a href="mailto:mchefonov37@gmail.com" style="color:#88c0f7">Email</a> | 
       <a href="https://t.me/saboteurxxx" style="color:#88c0f7">Telegram</a>
     </footer>
