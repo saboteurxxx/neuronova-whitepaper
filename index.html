@@ -14,16 +14,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 20px;
+      padding: 40px 20px;
+      overflow-x: hidden;
     }
     .container {
       max-width: 800px;
       text-align: center;
     }
-    img.logo {
-      width: 160px;
+    #sphere-container {
+      width: 100%;
+      height: 300px;
       margin-bottom: 24px;
-      filter: drop-shadow(0 0 12px rgba(42, 91, 218, 0.6));
+      position: relative;
     }
     h1 {
       font-size: 2.8rem;
@@ -83,7 +85,9 @@
 </head>
 <body>
   <div class="container">
-    <img src="logo-transparent.png" alt="NEURONOVA" class="logo" />
+    <!-- 3D Sphere Container -->
+    <div id="sphere-container"></div>
+
     <h1>NEURONOVA</h1>
     <p class="subtitle"><b>AI Agents Marketplace & Blockchain Ecosystem</b></p>
 
@@ -112,5 +116,61 @@
       <a href="https://t.me/saboteurxxx" style="color:#88c0f7">Telegram</a>
     </footer>
   </div>
+
+  <!-- Three.js Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Initialize scene, camera, renderer
+    const container = document.getElementById('sphere-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    // Create sphere geometry
+    const geometry = new THREE.SphereGeometry(5, 64, 64);
+    const material = new THREE.PointsMaterial({
+      color: 0x2a5bda,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.8
+    });
+
+    // Create points from geometry
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // Set camera position
+    camera.position.z = 10;
+
+    // Add ambient light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      points.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+
+    // Start animation
+    animate();
+
+    // Optional: Add pulsing effect to points
+    let time = 0;
+    setInterval(() => {
+      time += 0.05;
+      material.size = 0.05 + Math.sin(time) * 0.01;
+    }, 50);
+  </script>
 </body>
 </html>
