@@ -39,7 +39,7 @@
       font-size: 1.3rem;
       margin-bottom: 32px;
       opacity: 0.95;
-      min-height: 2.2rem;
+      min-height: 3rem;
     }
     .highlights {
       text-align: left;
@@ -83,11 +83,9 @@
       font-size: 0.95rem;
       opacity: 0.8;
     }
-
-    /* Floating Equations */
     .formula {
       position: fixed;
-      bottom: -50px; /* Начинаем снизу */
+      bottom: -50px;
       font-size: 18px;
       color: #00ffff60;
       user-select: none;
@@ -119,13 +117,13 @@
 
     <footer>
       © 2025 NEURONOVA — All rights reserved.<br>
-      Founder: Mihail Chefonov | 
-      <a href="mailto:mchefonov37@gmail.com" style="color:#88c0f7">Email</a> | 
+      Founder: Mihail Chefonov |
+      <a href="mailto:mchefonov37@gmail.com" style="color:#88c0f7">Email</a> |
       <a href="https://t.me/saboteurxxx" style="color:#88c0f7">Telegram</a>
     </footer>
   </div>
 
-  <!-- Three.js: Simplified 3D Sphere -->
+  <!-- Three.js: Animated Transparent Sphere -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     const container = document.getElementById('sphere-container');
@@ -137,11 +135,8 @@
     container.appendChild(renderer.domElement);
 
     const geometry = new THREE.SphereGeometry(5, 64, 64);
-    const material = new THREE.LineBasicMaterial({ color: 0x2a5bda, transparent: true, opacity: 0.8 });
-    const sphere = new THREE.LineSegments(
-      new THREE.WireframeGeometry(geometry),
-      material
-    );
+    const material = new THREE.LineBasicMaterial({ color: 0x2a5bda, transparent: true, opacity: 0.7 });
+    const sphere = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), material);
     scene.add(sphere);
 
     camera.position.z = 10;
@@ -160,57 +155,49 @@
     });
   </script>
 
-  <!-- Typewriter Effect -->
+  <!-- Typewriter Effect (full vision) -->
   <script>
-    const text = "Build a transparent, autonomous AI-agent economy on the blockchain — where every agent can earn, verify and collaborate through ZK-proofs.";
-    const typewriter = document.getElementById('typewriter');
+    const vision = "Build a transparent, autonomous AI-agent economy on the blockchain — where every agent can earn, verify and collaborate through ZK-proofs.";
+    const el = document.querySelector('.typewriter');
     let i = 0;
-    const speed = 30;
+    const speed = 40;
 
-    function typeWriter() {
-      if (i < text.length) {
-        typewriter.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
+    (function type() {
+      if (i < vision.length) {
+        el.textContent = vision.slice(0, i + 1) + '█';
         i++;
-        setTimeout(typeWriter, speed);
+        setTimeout(type, speed);
       } else {
-        typewriter.innerHTML = text;
+        setTimeout(() => { el.textContent = vision; }, 1000);
       }
-    }
-    window.onload = typeWriter;
+    })();
   </script>
 
-  <!-- Floating Equations -->
+  <!-- Floating Equations (from footer) -->
   <script>
-    const chars = ["∑", "π", "λ", "∞", "Ω", "ψ", "β", "Δ", "=", "∂", "∫", "∇"];
-    const container = document.body;
+    const symbols = ["∑", "π", "λ", "∞", "Ω", "ψ", "β", "Δ", "=", "∂", "∫", "∇"];
+    function spawn() {
+      const eq = document.createElement('div');
+      eq.className = 'formula';
+      eq.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      eq.style.left = Math.random() * 100 + 'vw';
+      eq.style.opacity = '0';
+      document.body.appendChild(eq);
 
-    function createFormula() {
-      const div = document.createElement("div");
-      div.className = "formula";
-      div.innerText = chars[Math.floor(Math.random() * chars.length)];
-      div.style.left = Math.random() * 100 + "vw";
-      div.style.opacity = "0";
-      container.appendChild(div);
-
-      // Animate up from footer
-      let pos = 0;
-      const id = setInterval(() => {
-        if (pos > 100) { // Ушли за верхний край
-          clearInterval(id);
-          div.remove();
-        } else {
-          pos += 0.5;
-          div.style.bottom = (100 - pos) + "vh"; // Движемся от низа вверх
-          div.style.opacity = Math.max(0, 1 - pos / 100); // Плавное исчезновение
+      let y = 0;
+      const int = setInterval(() => {
+        y += 1;
+        eq.style.bottom = y + 'vh';
+        eq.style.opacity = Math.max(0, 1 - y / 100);
+        if (y > 100) {
+          clearInterval(int);
+          eq.remove();
         }
-      }, 30);
+      }, 50);
 
-      // Schedule next
-      setTimeout(createFormula, Math.random() * 2000 + 1000);
+      setTimeout(spawn, 1000 + Math.random() * 2000);
     }
-
-    // Start floating equations
-    setTimeout(createFormula, 1000);
+    setTimeout(spawn, 1000);
   </script>
 </body>
 </html>
