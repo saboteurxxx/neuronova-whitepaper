@@ -7,25 +7,26 @@
   <style>
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
       background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
       color: #e0e1dd;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      overflow-x: hidden;
+      overflow: hidden;
+      position: relative;
     }
     .container {
+      position: relative;
+      z-index: 10;
       max-width: 800px;
       text-align: center;
+      padding: 60px 20px 40px;
+      margin: 0 auto;
     }
     #sphere-container {
       width: 100%;
       height: 300px;
-      margin-bottom: 24px;
-      position: relative;
+      margin: 0 auto 24px;
+      background: transparent;
     }
     h1 {
       font-size: 2.8rem;
@@ -34,10 +35,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .subtitle {
+    .typewriter {
       font-size: 1.3rem;
       margin-bottom: 32px;
       opacity: 0.95;
+      min-height: 2.2rem;
     }
     .highlights {
       text-align: left;
@@ -81,20 +83,25 @@
       font-size: 0.95rem;
       opacity: 0.8;
     }
+
+    /* Floating Equations */
+    .formula {
+      position: fixed;
+      top: 100vh;
+      font-size: 18px;
+      color: #00ffff60;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- 3D Sphere Container -->
     <div id="sphere-container"></div>
-
     <h1>NEURONOVA</h1>
-    <p class="subtitle"><b>AI Agents Marketplace & Blockchain Ecosystem</b></p>
-
-    <blockquote>
-      Build a transparent, autonomous AI-agent economy on the blockchain —<br>
-      where every agent can earn, verify and collaborate through ZK-proofs.
-    </blockquote>
+    <div class="typewriter" id="typewriter">Building a trusted economy of autonomous AI agents.</div>
 
     <div class="highlights">
       <ul>
@@ -117,60 +124,93 @@
     </footer>
   </div>
 
-  <!-- Three.js Script -->
+  <!-- Three.js: Simplified 3D Sphere -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    // Initialize scene, camera, renderer
     const container = document.getElementById('sphere-container');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
-    // Create sphere geometry
     const geometry = new THREE.SphereGeometry(5, 64, 64);
-    const material = new THREE.PointsMaterial({
-      color: 0x2a5bda,
-      size: 0.05,
-      transparent: true,
-      opacity: 0.8
-    });
+    const material = new THREE.LineBasicMaterial({ color: 0x2a5bda, transparent: true, opacity: 0.8 });
+    const sphere = new THREE.LineSegments(
+      new THREE.WireframeGeometry(geometry),
+      material
+    );
+    scene.add(sphere);
 
-    // Create points from geometry
-    const points = new THREE.Points(geometry, material);
-    scene.add(points);
-
-    // Set camera position
     camera.position.z = 10;
 
-    // Add ambient light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-
-    // Animation loop
     function animate() {
       requestAnimationFrame(animate);
-      points.rotation.y += 0.01;
+      sphere.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
+    animate();
 
-    // Handle window resize
     window.addEventListener('resize', () => {
       camera.aspect = container.clientWidth / container.clientHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(container.clientWidth, container.clientHeight);
     });
+  </script>
 
-    // Start animation
-    animate();
+  <!-- Typewriter Effect -->
+  <script>
+    const text = "Build a transparent, autonomous AI-agent economy on the blockchain — where every agent can earn, verify and collaborate through ZK-proofs.";
+    const typewriter = document.getElementById('typewriter');
+    let i = 0;
+    const speed = 30;
 
-    // Optional: Add pulsing effect to points
-    let time = 0;
-    setInterval(() => {
-      time += 0.05;
-      material.size = 0.05 + Math.sin(time) * 0.01;
-    }, 50);
+    function typeWriter() {
+      if (i < text.length) {
+        typewriter.innerHTML = text.substring(0, i + 1) + '<span class="cursor">|</span>';
+        i++;
+        setTimeout(typeWriter, speed);
+      } else {
+        // Remove cursor after finish
+        typewriter.innerHTML = text;
+      }
+    }
+    window.onload = typeWriter;
+  </script>
+
+  <!-- Floating Equations -->
+  <script>
+    const chars = ["∑", "π", "λ", "∞", "Ω", "ψ", "β", "Δ", "=", "∂", "∫", "∇"];
+    const container = document.body;
+
+    function createFormula() {
+      const div = document.createElement("div");
+      div.className = "formula";
+      div.innerText = chars[Math.floor(Math.random() * chars.length)];
+      div.style.left = Math.random() * 100 + "vw";
+      div.style.opacity = "0";
+      container.appendChild(div);
+
+      // Animate up
+      let pos = 100;
+      const id = setInterval(() => {
+        if (pos < -10) {
+          clearInterval(id);
+          div.remove();
+        } else {
+          pos -= 0.5;
+          div.style.top = pos + "vh";
+          div.style.opacity = Math.min(1, (100 - Math.abs(pos - 50)) / 50).toString();
+        }
+      }, 30);
+
+      // Schedule next
+      setTimeout(createFormula, Math.random() * 2000 + 1000);
+    }
+
+    // Start floating equations
+    setTimeout(createFormula, 1000);
   </script>
 </body>
 </html>
