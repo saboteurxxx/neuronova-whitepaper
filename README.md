@@ -48,7 +48,7 @@
 ---
 
 ### 🤝 Team & Contacts
-**Founder:** Max Chefonov  
+Founder: Mihail Chefonov
 📧 [mchefonov37@gmail.com](mailto:mchefonov37@gmail.com)  
 💬 [@saboteurxxx](https://t.me/saboteurxxx)
 
