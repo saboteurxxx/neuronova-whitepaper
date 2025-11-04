@@ -83,6 +83,8 @@
       font-size: 0.95rem;
       opacity: 0.8;
     }
+
+    /* Floating Equations */
     .formula {
       position: fixed;
       bottom: -50px;
@@ -117,13 +119,13 @@
 
     <footer>
       © 2025 NEURONOVA — All rights reserved.<br>
-      Founder: Mihail Chefonov |
-      <a href="mailto:mchefonov37@gmail.com" style="color:#88c0f7">Email</a> |
+      Founder: Mihail Chefonov | 
+      <a href="mailto:mchefonov37@gmail.com" style="color:#88c0f7">Email</a> | 
       <a href="https://t.me/saboteurxxx" style="color:#88c0f7">Telegram</a>
     </footer>
   </div>
 
-  <!-- Three.js: Animated Transparent Sphere -->
+  <!-- Three.js: Animated Transparent Point-Sphere -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     const container = document.getElementById('sphere-container');
@@ -134,16 +136,38 @@
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
+    // Create sphere geometry
     const geometry = new THREE.SphereGeometry(5, 64, 64);
-    const material = new THREE.LineBasicMaterial({ color: 0x2a5bda, transparent: true, opacity: 0.7 });
-    const sphere = new THREE.LineSegments(new THREE.WireframeGeometry(geometry), material);
-    scene.add(sphere);
+
+    // Create point material with glow
+    const pointMaterial = new THREE.PointsMaterial({
+      color: 0x2a5bda,
+      size: 0.05,
+      transparent: true,
+      opacity: 0.8,
+      blending: THREE.AdditiveBlending
+    });
+
+    // Create points
+    const points = new THREE.Points(geometry, pointMaterial);
+    scene.add(points);
+
+    // Create wireframe lines (optional)
+    const wireframeGeometry = new THREE.WireframeGeometry(geometry);
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x2a5bda,
+      transparent: true,
+      opacity: 0.3
+    });
+    const wireframe = new THREE.LineSegments(wireframeGeometry, lineMaterial);
+    scene.add(wireframe);
 
     camera.position.z = 10;
 
     function animate() {
       requestAnimationFrame(animate);
-      sphere.rotation.y += 0.01;
+      points.rotation.y += 0.01;
+      wireframe.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
     animate();
@@ -155,7 +179,7 @@
     });
   </script>
 
-  <!-- Typewriter Effect (full vision) -->
+  <!-- Typewriter Effect -->
   <script>
     const vision = "Build a transparent, autonomous AI-agent economy on the blockchain — where every agent can earn, verify and collaborate through ZK-proofs.";
     const el = document.querySelector('.typewriter');
@@ -173,7 +197,7 @@
     })();
   </script>
 
-  <!-- Floating Equations (from footer) -->
+  <!-- Floating Equations -->
   <script>
     const symbols = ["∑", "π", "λ", "∞", "Ω", "ψ", "β", "Δ", "=", "∂", "∫", "∇"];
     function spawn() {
