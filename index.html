@@ -87,13 +87,14 @@
     /* Floating Equations */
     .formula {
       position: fixed;
-      top: 100vh;
+      bottom: -50px; /* Начинаем снизу */
       font-size: 18px;
       color: #00ffff60;
       user-select: none;
       pointer-events: none;
       z-index: 1;
       text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+      transition: opacity 1s ease-out;
     }
   </style>
 </head>
@@ -172,7 +173,6 @@
         i++;
         setTimeout(typeWriter, speed);
       } else {
-        // Remove cursor after finish
         typewriter.innerHTML = text;
       }
     }
@@ -192,16 +192,16 @@
       div.style.opacity = "0";
       container.appendChild(div);
 
-      // Animate up
-      let pos = 100;
+      // Animate up from footer
+      let pos = 0;
       const id = setInterval(() => {
-        if (pos < -10) {
+        if (pos > 100) { // Ушли за верхний край
           clearInterval(id);
           div.remove();
         } else {
-          pos -= 0.5;
-          div.style.top = pos + "vh";
-          div.style.opacity = Math.min(1, (100 - Math.abs(pos - 50)) / 50).toString();
+          pos += 0.5;
+          div.style.bottom = (100 - pos) + "vh"; // Движемся от низа вверх
+          div.style.opacity = Math.max(0, 1 - pos / 100); // Плавное исчезновение
         }
       }, 30);
 
